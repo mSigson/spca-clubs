@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import theme from '../src/theme'
 
 const Home = () => (
   <div className="container">
@@ -34,6 +35,7 @@ const Home = () => (
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        color: ${theme.palette.secondary.main}
       }
 
       footer {
