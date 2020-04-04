@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import mongoMiddleware from '../../utils/mongo-middleware';
 import apiHandler from '../../utils/apiHandler';
-
 import UserSchema from '../../models/User';
+
 const User = mongoose.model('user', UserSchema);
 
 export default mongoMiddleware(async (req, res) => {
