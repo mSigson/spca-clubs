@@ -8,7 +8,7 @@ const Home = ({ users }) => {
       <title>Create Next App</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <main>The first user is {users[0].name}</main>
+  <main>The first user is {users[0].name}</main>
     <footer>
       <a
         href="https://zeit.co?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -166,7 +166,6 @@ const Home = ({ users }) => {
 Home.getInitialProps = async function() {
   const res = await fetch(`${process.env.API_URL}/api/users`);
   const data = await res.json();
-
   return {
     users: data
   };

@@ -1,18 +1,14 @@
-import mongoose from 'mongoose';
 import mongoMiddleware from '../../utils/mongo-middleware';
 import apiHandler from '../../utils/apiHandler';
-import UserSchema from '../../models/User';
 
-const User = mongoose.model('user', UserSchema);
-
-export default mongoMiddleware(async (req, res) => {
+export default mongoMiddleware(async (req, res, models) => {
   const {
     method
   } = req
 
   apiHandler(res, method, {
-    GET: (response) => {
-      User.find({}, (error, user) => {
+    GET: async (response) => {
+      await models.User.find({}, (error, user) => {
         if (error) {
           response.status(500).json({ error });
         } else {
