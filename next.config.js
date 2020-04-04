@@ -1,14 +1,14 @@
-const dotEnvResult = require('dotenv').config()
+const dotEnvResult = require('dotenv').config({path: __dirname + '/.env.build'});
 
-const dev = process.env.NODE_ENV === 'development'
+const dev = process.env.NODE_ENV === 'development';
 
-if (dotEnvResult.error) {
+if (dev && dotEnvResult.error) {
   throw dotEnvResult.error
 }
 
 module.exports = {
   env: {
-    MONGO_URI: "mongodb+srv://m-sigson:EzHjK58ac8RTlt15@cluster0-omzgj.mongodb.net/spca-clubs-db?retryWrites=true&w=majority",
-    API_URL: dev ? "http://localhost:3000" : "http://spca-clubs.now.sh",
+    MONGO_URI: process.env.MONGO_URI,
+    API_URL: dev ? "http://localhost:3000" : process.env.API_URL,
   }
 }
