@@ -13,7 +13,7 @@ const addUser = async (e, user: IUser) => {
 };
 
 const Form = () => {
-  const [value, setValue] = useState("Karen");
+  const [value, setValue] = useState("" as string);
   const newUser: IUser = { name: value };
   return (
     <form onSubmit={(e) => addUser(e, newUser)}>
