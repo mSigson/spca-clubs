@@ -1,15 +1,18 @@
-import mongoose from 'mongoose'
-import moment from 'moment';
+import mongoose from "mongoose";
+import moment from "moment";
+
+delete mongoose.connection.models["User"];
 
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Please add name'],
+    required: [true, "Name is required"],
   },
   created: {
     type: Date,
-    default: moment.utc()
-  }
-})
+    required: [true, "Created is required"],
+    default: moment.utc(),
+  },
+});
 
-module.exports = UserSchema;
+module.exports = mongoose.model("User", UserSchema);
