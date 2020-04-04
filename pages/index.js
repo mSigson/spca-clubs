@@ -164,6 +164,7 @@ const Home = ({ users }) => {
 )};
 
 Home.getInitialProps = async function() {
+  console.log(process.env.NODE_ENV);
   const res = await fetch(`${process.env.API_URL}/api/users`);
   const data = await res.json();
   return {
