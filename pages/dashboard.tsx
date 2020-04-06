@@ -1,27 +1,15 @@
 import React from "react";
-import auth0 from "../utils/api/auth0";
+import auth0 from "../utils/auth/auth0";
 import { fetchUser } from "../utils/user";
+import Layout from "../components/Layout";
+import requireAuthentication from "../components/AuthenticatedComponent";
 
 const Dashboard = ({ user }) => {
-  return <div>Current user: {user.name}</div>;
+  return (
+    <Layout user={user}>
+      <p>Current user: {user.name}</p>
+    </Layout>
+  );
 };
 
-Dashboard.getInitialProps = async ({ req, res }) => {
-  if (typeof window === "undefined") {
-    const session = await auth0.getSession(req);
-    console.log(session);
-    if (!session || !session.user) {
-      res.writeHead(302, {
-        Location: "/api/login",
-      });
-      res.end();
-      return;
-    }
-    return { user: session.user };
-  }
-
-  const user = await fetchUser();
-  return { user };
-};
-
-export default Dashboard;
+export default requireAuthentication(Dashboard);

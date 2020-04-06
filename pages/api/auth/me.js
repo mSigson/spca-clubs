@@ -1,4 +1,4 @@
-import auth0 from "../../../utils/api/auth0";
+import auth0 from "../../../utils/auth/auth0";
 
 export default async function me(req, res) {
   try {

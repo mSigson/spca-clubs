@@ -1,5 +1,5 @@
 import mongoMiddleware from "../../utils/mongo-middleware";
-import apiHandler from "../../utils/apiHandler";
+import apiHandler from "../../utils/authHandler";
 
 export default mongoMiddleware(async (req, res, models) => {
   const { method } = req;
