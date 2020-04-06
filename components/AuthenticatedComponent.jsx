@@ -6,7 +6,7 @@ const requireAuthentication = (Component) => {
   const AuthenticatedComponent = (props) => {
     const loginErrorMessage = (
       <div>
-        Please <a href="/login">login</a> in order to view this part of the
+        Please <a href="/api/login">login</a> in order to view this part of the
         application.
       </div>
     );
@@ -19,11 +19,7 @@ const requireAuthentication = (Component) => {
     if (typeof window === "undefined") {
       const session = await auth0.getSession(req);
       if (!session || !session.user) {
-        res.writeHead(302, {
-          Location: "/api/login",
-        });
-        res.end();
-        return;
+        return {};
       }
       return { user: session.user };
     }
