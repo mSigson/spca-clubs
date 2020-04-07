@@ -1,6 +1,5 @@
 import React from "react";
-import auth0 from "../utils/auth/auth0";
-import { fetchUser } from "../utils/user";
+
 import Layout from "../components/Layout";
 import requireAuthentication from "../components/AuthenticatedComponent";
 

@@ -1,31 +1,28 @@
 import React from "react";
-import auth0 from "../utils/auth/auth0";
-import { fetchUser } from "../utils/user";
+import { useFetchUser, useUser } from "../utils/user";
 
 const requireAuthentication = (Component) => {
   const AuthenticatedComponent = (props) => {
+    const { user, loading } = useFetchUser();
+
     const loginErrorMessage = (
       <div>
         Please <a href="/api/login">login</a> in order to view this part of the
         application.
       </div>
     );
+
     return (
-      <div>{props.user ? <Component {...props} /> : loginErrorMessage}</div>
+      <div>
+        {loading ? (
+          <div>Loading...</div>
+        ) : user ? (
+          <Component user={user} {...props} />
+        ) : (
+          loginErrorMessage
+        )}
+      </div>
     );
-  };
-
-  AuthenticatedComponent.getInitialProps = async ({ req, res }) => {
-    if (typeof window === "undefined") {
-      const session = await auth0.getSession(req);
-      if (!session || !session.user) {
-        return {};
-      }
-      return { user: session.user };
-    }
-
-    const user = await fetchUser();
-    return { user };
   };
 
   return AuthenticatedComponent;
