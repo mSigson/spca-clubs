@@ -1,5 +1,5 @@
 import React from "react";
-import { useFetchUser, useUser } from "../utils/user";
+import { useFetchUser } from "../utils/user";
 
 const requireAuthentication = (Component) => {
   const AuthenticatedComponent = (props) => {
