@@ -34,7 +34,7 @@ const SidebarLink = ({ href, icon, text }) => {
   );
 };
 const Sidebar = () => (
-  <ul>
+  <ul id="app-sidebar">
     <li>
       <SidebarLink href="/" icon={DashboardOutlinedIcon} text="Dashboard" />
     </li>

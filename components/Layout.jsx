@@ -45,9 +45,16 @@ const Layout = ({ user, loading = false, children }) => (
         }
 
         main {
-          padding: 18px 32px;
+          width: 100%;
+          padding: 18px 60px 18px 32px;
           color: ${theme.palette.text.primary};
           font-family: ${theme.typography.fontFamily};
+        }
+
+        @media (max-width: 960px) {
+          #app-sidebar {
+            display: none;
+          }
         }
       `}</style>
     </div>
