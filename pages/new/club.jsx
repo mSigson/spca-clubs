@@ -13,13 +13,15 @@ const CreateClub = ({ user }) => {
       <style jsx>{`
         h1 {
           margin-bottom: 24px;
+          background: white;
+          padding: 24px;
+          border-radius: 8px;
         }
 
         .form-container {
           background: white;
           padding: 24px;
           border-radius: 8px;
-          max-width: 600px;
         }
       `}</style>
     </Layout>

@@ -1,19 +1,24 @@
 import React from "react";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import theme from "../src/theme";
 import Link from "next/link";
 import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import CloseIcon from "@material-ui/icons/Close";
 import UserAvatar from "../components/UserAvatar";
 
-const Header = ({ user, width }) => {
+const Header = ({ user, sideBarVisible, toggleSideBarVisible, width }) => {
   return (
     <header>
       {isWidthUp("md", width) ? (
         <div className="header-title">SPCA Clubs</div>
       ) : (
-        <button className="menu-toggle">
-          <MenuIcon fontSize="large" />
+        <button onClick={toggleSideBarVisible} className="menu-toggle">
+          {sideBarVisible ? (
+            <CloseIcon fontSize="large" />
+          ) : (
+            <MenuIcon fontSize="large" />
+          )}
         </button>
       )}
       <div>
