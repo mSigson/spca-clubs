@@ -1,5 +1,6 @@
 import React from "react";
 import { useFetchUser } from "../utils/user";
+import Layout from "../components/Layout";
 
 const requireAuthentication = (Component) => {
   const AuthenticatedComponent = (props) => {
@@ -19,7 +20,7 @@ const requireAuthentication = (Component) => {
         ) : user ? (
           <Component user={user} {...props} />
         ) : (
-          loginErrorMessage
+          <Layout>{loginErrorMessage}</Layout>
         )}
       </div>
     );

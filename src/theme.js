@@ -7,7 +7,9 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
+      light: "#E6EFFB",
       main: "#00337f",
+      contrastText: "#fff",
     },
     secondary: {
       main: "#19857b",
@@ -21,6 +23,9 @@ const theme = createMuiTheme({
     background: {
       default: "#f1f2f5",
     },
+  },
+  overrides: {
+    topBarHeight: "72px",
   },
 });
 
