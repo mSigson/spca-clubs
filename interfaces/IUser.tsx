@@ -4,9 +4,10 @@ interface IUser {
   given_name?: string;
   family_name?: string;
   nickname?: string;
+  email: string;
   picture?: string;
   locale: "en";
-  created_at: Date;
+  created_at?: Date;
 }
 
 export default IUser;

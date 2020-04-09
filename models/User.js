@@ -15,6 +15,7 @@ const UserSchema = new mongoose.Schema({
   given_name: String,
   family_name: String,
   nickname: String,
+  email: String,
   picture: {
     type: String,
   },

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "../models/User";
+import Club from "../models/Club";
 
 const connection = {};
 
@@ -18,6 +19,7 @@ const dbConnect = async () => {
   connection.isConnected = db.connections[0].readyState;
   connection.models = {
     User,
+    Club,
   };
 
   return connection.models;

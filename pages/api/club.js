@@ -3,14 +3,15 @@ import apiHandler from "../../utils/apiHandler";
 
 export default mongoMiddleware(async (req, res, models) => {
   const { method, body } = req;
+  const { Club } = models;
 
   apiHandler(res, method, {
     POST: async (response) => {
-      const newUser = JSON.parse(body);
-      const { User } = models;
+      console.log("hi");
+      const newClub = JSON.parse(body);
       try {
-        const newUserModel = await new User(newUser).save();
-        response.status(200).json({ data: newUserModel });
+        const newClubModel = await new Club(newClub).save();
+        response.status(200).json({ data: newClubModel });
       } catch (err) {
         response.status(400).json("Error:" + err);
       }
