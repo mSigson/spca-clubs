@@ -1,7 +1,7 @@
 import React from "react";
 import fetch from "isomorphic-unfetch";
 
-import theme from "../../src/theme";
+import theme from "../../src/styles/theme";
 import Layout from "../../components/Layout";
 
 import requireAuthentication from "../../components/AuthenticatedComponent";
@@ -34,7 +34,7 @@ const CreateClub = ({ user }) => {
           background: white;
           padding: 24px;
           border-radius: 8px;
-          color: ${theme.palette.text.header};
+          color: ${theme.palette.primary.main};
         }
 
         .form-container {

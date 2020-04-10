@@ -3,7 +3,7 @@ import Router from "next/router";
 
 import Layout from "../components/Layout";
 import { useFetchUser } from "../utils/user";
-import theme from "../src/theme";
+import theme from "../src/styles/theme";
 
 export default function IndexRedirect() {
   const { user, loading } = useFetchUser();

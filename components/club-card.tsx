@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import theme from "../src/theme";
+import theme from "../src/styles/theme";
 import AnimalAvatars from "./animalIcons/index";
 
 const ClubCard = ({ club }) => {
@@ -25,7 +25,6 @@ const ClubCard = ({ club }) => {
           padding:  24px;
           background: #fff;
           border-radius: 6px;
-          transition: box-shadow 0.1s;
           cursor: pointer;
         }
 

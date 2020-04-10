@@ -32,7 +32,7 @@ const Dashboard = ({ user }) => {
         .clubs-container {
           margin-top: 32px;
           display: flex;
-          flew-wrap: wrap;
+          flex-wrap: wrap;
           width: 100%;
         }
 

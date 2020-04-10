@@ -1,5 +1,6 @@
 import React from "react";
 import { useFetchUser } from "../utils/user";
+import { UserProvider } from "../utils/user";
 import Layout from "../components/Layout";
 
 const requireAuthentication = (Component) => {
@@ -18,7 +19,9 @@ const requireAuthentication = (Component) => {
         {loading ? (
           <div>Loading...</div>
         ) : user ? (
-          <Component user={user} {...props} />
+          <UserProvider value={{ user, loading }}>
+            <Component user={user} {...props} />
+          </UserProvider>
         ) : (
           <Layout>{loginErrorMessage}</Layout>
         )}

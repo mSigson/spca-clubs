@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import theme from "../../src/styles/theme";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -136,19 +137,6 @@ const ClubForm = ({ onSubmit }) => {
                 );
               })}
             </ul>
-            <div className="avatar-credit">
-              Icons made by{" "}
-              <a
-                href="https://www.flaticon.com/authors/freepik"
-                title="Freepik"
-              >
-                Freepik
-              </a>{" "}
-              from{" "}
-              <a href="https://www.flaticon.com/" title="Flaticon">
-                www.flaticon.com
-              </a>
-            </div>
           </div>
         </section>
       </div>
@@ -157,9 +145,30 @@ const ClubForm = ({ onSubmit }) => {
         variant="contained"
         color="primary"
         className="create-button"
+        size="large"
       >
         Create
       </Button>
+      <div className="avatar-credit">
+        Icons made by{" "}
+        <a
+          href="https://www.flaticon.com/authors/freepik"
+          title="Freepik"
+          rel="noopener"
+          target="_blank"
+        >
+          Freepik
+        </a>{" "}
+        from{" "}
+        <a
+          href="https://www.flaticon.com/"
+          title="Flaticon"
+          rel="noopener"
+          target="_blank"
+        >
+          www.flaticon.com
+        </a>
+      </div>
       <style>{`
         .form-input-container {
           display: flex;
@@ -191,14 +200,24 @@ const ClubForm = ({ onSubmit }) => {
         }
 
         .create-button {
-          margin-top: 20px;
           display: flex;
           flex: 1;
+          width: 200px;
+          margin: 20px auto 0;
         }
 
         .avatar-credit {
           margin-top: 24px;
           text-align: center;
+        }
+
+        .avatar-credit a {
+          text-decoration: none;
+          color: ${theme.palette.primary.main};
+        }
+
+        .avatar-credit a:hover {
+          text-decoration: underline;
         }
 
         @media (max-width: 960px) {

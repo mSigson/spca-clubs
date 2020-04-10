@@ -1,4 +1,5 @@
 import React from "react";
+import theme from "../src/styles/theme";
 
 const UserAvatar = ({ user, height, width }) => {
   return (
@@ -9,9 +10,10 @@ const UserAvatar = ({ user, height, width }) => {
           width: ${width};
           height: ${height};
           border-radius: 50%;
+          border: 1px solid ${theme.palette.text.primary}
         }
 
-        img {
+        .user-avatar-container img {
           width: 100%;
           height: 100%;
           border-radius: 50%;
