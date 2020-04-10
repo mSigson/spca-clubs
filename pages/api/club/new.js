@@ -1,6 +1,6 @@
-import mongoMiddleware from "../../utils/mongo-middleware";
-import apiHandler from "../../utils/apiHandler";
-import auth0 from "../../utils/auth/auth0";
+import mongoMiddleware from "../../../utils/mongo-middleware";
+import apiHandler from "../../../utils/apiHandler";
+import auth0 from "../../../utils/auth/auth0";
 
 export default mongoMiddleware(async (req, res, models) => {
   const { method, body } = req;
@@ -18,7 +18,7 @@ export default mongoMiddleware(async (req, res, models) => {
         await newClubModel.save();
         userModel.clubs.push(newClubModel);
         await userModel.save();
-        response.status(200).json({ data: newClubModel });
+        response.status(200).json({ data: userModel });
       } catch (err) {
         response.status(400).json("Error:" + err);
       }

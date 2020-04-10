@@ -1,13 +1,13 @@
 import React from "react";
 
-const UserAvatar = ({ user }) => {
+const UserAvatar = ({ user, height, width }) => {
   return (
     <div className="user-avatar-container">
       <img src={user.picture} alt={`An image of ${user.name}`} />
       <style>{`
         .user-avatar-container {
-          width: 32px;
-          height: 32px;
+          width: ${width};
+          height: ${height};
           border-radius: 50%;
         }
 
@@ -19,6 +19,11 @@ const UserAvatar = ({ user }) => {
       `}</style>
     </div>
   );
+};
+
+UserAvatar.defaultProps = {
+  height: "32px",
+  width: "32px",
 };
 
 export default UserAvatar;

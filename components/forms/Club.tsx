@@ -23,10 +23,10 @@ const useStyles = makeStyles((theme) => ({
 const ClubForm = ({ width, onSubmit }) => {
   const { user } = useUser();
 
-  const [name, setClubName] = useState("cool club" as string);
-  const [num_of_members, setNumOfMembers] = useState(3 as number);
-  const [minAge, setMinAge] = useState(12 as number);
-  const [maxAge, setMaxAge] = useState(14 as number);
+  const [name, setClubName] = useState(undefined as string);
+  const [num_of_members, setNumOfMembers] = useState(undefined as number);
+  const [minAge, setMinAge] = useState(undefined as number);
+  const [maxAge, setMaxAge] = useState(undefined as number);
   const [advisors] = useState([user] as IUser[]);
 
   const classes = useStyles();

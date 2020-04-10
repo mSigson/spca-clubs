@@ -42,6 +42,8 @@ const Layout = ({ user, loading = false, children }) => {
           h5,
           h6 {
             margin: 0;
+            padding: 0;
+            list-style: none;
           }
 
           body {
@@ -70,7 +72,6 @@ const Layout = ({ user, loading = false, children }) => {
               position: absolute;
               top: ${theme.overrides.topBarHeight};
               bottom: 0;
-              transition: transform ease-out 0.5s;
               transform: translateX(-100vw);
             }
 

@@ -9,7 +9,7 @@ import ClubForm from "../../components/forms/Club";
 
 const createNewClub = async (newClub) => {
   try {
-    const { data: newClubModel } = await fetch("/api/club", {
+    await fetch("/api/club/new", {
       method: "POST",
       body: JSON.stringify(newClub),
     });

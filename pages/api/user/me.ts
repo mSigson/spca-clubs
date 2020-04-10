@@ -11,6 +11,7 @@ export default mongoMiddleware(async (req, res, models) => {
     GET: async (response) => {
       try {
         const { user } = await auth0.getSession(req);
+
         const existingUser = await User.findOne({ user_id: user.sub }).populate(
           "clubs"
         );

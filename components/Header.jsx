@@ -23,7 +23,7 @@ const Header = ({ user, sideBarVisible, toggleSideBarVisible, width }) => {
       )}
       <div>
         {user ? (
-          <UserAvatar user={user} />
+          <UserAvatar user={user} height="40px" width="40px" />
         ) : (
           <Link href="/api/login">
             <Button variant="contained" color="primary">
@@ -32,7 +32,7 @@ const Header = ({ user, sideBarVisible, toggleSideBarVisible, width }) => {
           </Link>
         )}
       </div>
-      <style jsx>{`
+      <style jsx global>{`
         header {
           display: flex;
           justify-content: space-between;
@@ -55,6 +55,11 @@ const Header = ({ user, sideBarVisible, toggleSideBarVisible, width }) => {
           outline: none;
           cursor: pointer;
           margin-left: -10px;
+        }
+
+        .user-avatar-container {
+          width: 40px;
+          height: 40x;
         }
 
         @media (max-width: 960px) {

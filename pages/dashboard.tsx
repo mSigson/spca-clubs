@@ -1,29 +1,45 @@
 import React from "react";
 import Link from "next/link";
 import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
 
 import Layout from "../components/Layout";
 import requireAuthentication from "../components/AuthenticatedComponent";
-import AddIcon from "@material-ui/icons/Add";
+import ClubCard from "../components/club-card";
 
 const Dashboard = ({ user }) => {
+  const { clubs } = user;
   return (
     <Layout user={user}>
       <div>
-        <Link href="/new/club">
+        <Link href="/club/new">
           <Button variant="contained" color="primary" startIcon={<AddIcon />}>
             Add a new club
           </Button>
         </Link>
+        <ul className="clubs-container">
+          {clubs.length > 0 &&
+            clubs.map((club) => (
+              <li key={club._id}>
+                <ClubCard club={club} />
+              </li>
+            ))}
+        </ul>
       </div>
+      <style jsx global>{`
+        .clubs-container {
+          margin-top: 32px;
+          display: flex;
+          flew-wrap: wrap;
+        }
+
+        .clubs-container li {
+          margin-right: 24px;
+          margin-bottom: 24px;
+        }
+      `}</style>
     </Layout>
   );
 };
-
-// Dashboard.getInitialProps = async (ctx) => {
-//   const res = await fetch("/api/user/clubs");
-//   const json = await res.json();
-//   return { clubs: res };
-// };
 
 export default requireAuthentication(Dashboard);
