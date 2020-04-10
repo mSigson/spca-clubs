@@ -13,12 +13,10 @@ export default mongoMiddleware(async (req, res, models) => {
       try {
         const { user } = await auth0.getSession(req);
         const userModel = await User.findOne({ user_id: user.sub });
-        const newClubModel = await new Club(newClub);
-        await newClubModel.advisors.push(userModel);
-        await newClubModel.save();
+        const newClubModel = await new Club(newClub).save();
         userModel.clubs.push(newClubModel);
         await userModel.save();
-        response.status(200).json({ data: userModel });
+        response.status(200).json({ data: newClubModel });
       } catch (err) {
         response.status(400).json("Error:" + err);
       }

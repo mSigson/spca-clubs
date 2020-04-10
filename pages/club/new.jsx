@@ -7,12 +7,15 @@ import Layout from "../../components/Layout";
 import requireAuthentication from "../../components/AuthenticatedComponent";
 import ClubForm from "../../components/forms/Club";
 
-const createNewClub = async (newClub) => {
+const createNewClub = async (newClubData, user) => {
   try {
-    await fetch("/api/club/new", {
+    const res = await fetch("/api/club/new", {
       method: "POST",
-      body: JSON.stringify(newClub),
+      body: JSON.stringify(newClubData),
     });
+    const { data: newClubModel } = await res.json();
+    user.clubs.push(newClubModel);
+    console.log(user);
   } catch (e) {
     console.log(e);
   }
@@ -23,7 +26,7 @@ const CreateClub = ({ user }) => {
     <Layout user={user}>
       <h1>Create Club</h1>
       <div className="form-container">
-        <ClubForm onSubmit={createNewClub} />
+        <ClubForm onSubmit={(newClub) => createNewClub(newClub, user)} />
       </div>
       <style jsx>{`
         h1 {

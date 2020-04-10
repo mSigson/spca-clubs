@@ -2,6 +2,7 @@ import IUser from "./IUser";
 
 interface IClub {
   name: string;
+  avatar: string;
   age_range: {
     min: number;
     max: number;
@@ -9,7 +10,7 @@ interface IClub {
   num_of_members: number;
   advisors: IUser[];
   school: string;
-  created_at?: Date;
+  created_at: Date;
 }
 
 export default IClub;

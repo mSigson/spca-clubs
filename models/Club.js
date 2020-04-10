@@ -22,6 +22,10 @@ const ClubSchema = new Schema({
     type: Number,
     required: [true, "Club have number of members"],
   },
+  avatar: {
+    type: String,
+    required: [true, "Club must have an avatar"],
+  },
   advisors: [
     {
       type: Schema.Types.ObjectId,

@@ -9,6 +9,8 @@ import ClubCard from "../components/club-card";
 
 const Dashboard = ({ user }) => {
   const { clubs } = user;
+
+  console.log(clubs);
   return (
     <Layout user={user}>
       <div>
@@ -31,6 +33,7 @@ const Dashboard = ({ user }) => {
           margin-top: 32px;
           display: flex;
           flew-wrap: wrap;
+          width: 100%;
         }
 
         .clubs-container li {
