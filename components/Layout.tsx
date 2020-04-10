@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
-import Sidebar from "../components/Sidebar";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
 import theme from "../src/styles/theme";
+import styleVariables from "../src/styles/variables";
 
 const Layout = ({ user, children }) => {
   const [sideBarVisible, toggleSideBarVisible] = useState(false);
@@ -20,15 +21,13 @@ const Layout = ({ user, children }) => {
       <style jsx>{`
         .container {
           display: flex;
-          height: calc(100vh - ${theme.overrides.topBarHeight});
-          font-family: ${theme.typography.fontFamily};
+          height: calc(100vh - ${styleVariables.topBarHeight});
         }
 
         main {
           width: 100%;
           padding: 18px 100px 18px 32px;
           color: ${theme.palette.text.primary};
-          font-family: ${theme.typography.fontFamily};
         }
 
         @media (max-width: 960px) {
@@ -38,7 +37,7 @@ const Layout = ({ user, children }) => {
 
           #app-sidebar {
             position: absolute;
-            top: ${theme.overrides.topBarHeight};
+            top: ${styleVariables.topBarHeight};
             bottom: 0;
             transform: translateX(-100vw);
           }

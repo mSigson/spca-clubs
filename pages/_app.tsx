@@ -1,5 +1,5 @@
 import { AppProps } from "next/app";
-import "../src/styles/_setup.scss";
+import "../src/styles/_setup.css";
 import theme from "../src/styles/theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import Head from "next/head";
