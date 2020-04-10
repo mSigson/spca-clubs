@@ -1,11 +1,11 @@
 import React from "react";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
-import theme from "../src/styles/theme";
+import theme from "styles/theme";
 import Link from "next/link";
 import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
-import UserAvatar from "../components/UserAvatar";
+import UserAvatar from "./UserAvatar";
 
 const Header = ({ user, sideBarVisible, toggleSideBarVisible, width }) => {
   return (

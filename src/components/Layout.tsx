@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-import theme from "../src/styles/theme";
-import styleVariables from "../src/styles/variables";
+import Header from "components/Header";
+import Sidebar from "components/Sidebar";
+import theme from "styles/theme";
+import styleVariables from "styles/variables";
 
 const Layout = ({ user, children }) => {
   const [sideBarVisible, toggleSideBarVisible] = useState(false);

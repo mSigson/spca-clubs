@@ -1,9 +1,9 @@
 import React from "react";
-import theme from "../../src/styles/theme";
-import Layout from "../../components/Layout";
-import requireAuthentication from "../../components/AuthenticatedComponent";
+import theme from "styles/theme";
+import Layout from "components/Layout";
+import requireAuthentication from "components/AuthenticatedComponent";
 
-import { useUser } from "../../utils/user";
+import { useUser } from "utils/user";
 import { useRouter } from "next/router";
 
 const ClubPage = () => {

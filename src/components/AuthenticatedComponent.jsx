@@ -1,7 +1,7 @@
 import React from "react";
-import { useFetchUser } from "../utils/user";
-import { UserProvider } from "../utils/user";
-import Layout from "../components/Layout";
+import { useFetchUser } from "utils/user";
+import { UserProvider } from "utils/user";
+import Layout from "components/Layout";
 
 const requireAuthentication = (Component) => {
   const AuthenticatedComponent = (props) => {

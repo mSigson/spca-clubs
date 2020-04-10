@@ -1,11 +1,11 @@
 import React from "react";
 import fetch from "isomorphic-unfetch";
 
-import theme from "../../src/styles/theme";
-import Layout from "../../components/Layout";
+import theme from "styles/theme";
+import Layout from "components/Layout";
 
-import requireAuthentication from "../../components/AuthenticatedComponent";
-import ClubForm from "../../components/forms/Club";
+import requireAuthentication from "components/AuthenticatedComponent";
+import ClubForm from "components/forms/Club";
 
 const createNewClub = async (newClubData, user) => {
   try {

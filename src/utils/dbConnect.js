@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import User from "../models/User";
-import Club from "../models/Club";
+import User from "models/User";
+import Club from "models/Club";
 
 const connection = {};
 

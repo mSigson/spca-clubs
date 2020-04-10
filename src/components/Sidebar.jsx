@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import theme from "../src/styles/theme";
+import theme from "styles/theme";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
 
 const SidebarLink = ({ href, icon, text, sideBarVisible }) => {

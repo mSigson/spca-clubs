@@ -1,9 +1,8 @@
 import React from "react";
 import Router from "next/router";
 
-import Layout from "../components/Layout";
-import { useFetchUser } from "../utils/user";
-import theme from "../src/styles/theme";
+import Layout from "components/Layout";
+import { useFetchUser } from "utils/user";
 
 export default function IndexRedirect() {
   const { user, loading } = useFetchUser();

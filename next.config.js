@@ -1,3 +1,5 @@
+const path = require("path");
+
 const dotEnvResult = require("dotenv").config({
   path: __dirname + "/.env.build",
 });
@@ -22,5 +24,9 @@ module.exports = {
       process.env.POST_LOGOUT_REDIRECT_URI || "http://localhost:3000/dashboard",
     SESSION_COOKIE_SECRET: process.env.SESSION_COOKIE_SECRET,
     SESSION_COOKIE_LIFETIME: 7200,
+  },
+  webpack: (config) => {
+    config.resolve.alias["~"] = path.resolve(__dirname);
+    return config;
   },
 };
