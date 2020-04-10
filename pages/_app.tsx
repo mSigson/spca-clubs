@@ -2,10 +2,15 @@ import { AppProps } from "next/app";
 import "../src/styles/_setup.scss";
 import theme from "../src/styles/theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <MuiThemeProvider theme={theme}>
+      <Head>
+        <title>SPCA Clubs</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Component {...pageProps} />
       <style>
         {`

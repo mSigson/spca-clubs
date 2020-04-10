@@ -16,17 +16,10 @@ export default function IndexRedirect() {
 
   return (
     <>
-      <Layout user={user} loading={loading}>
+      <Layout user={user}>
         <p>Loading login info...</p>
       </Layout>
-      <style jsx global>{`
-        body {
-          margin: 0;
-          color: ${theme.palette.text.primary};
-          font-family: ${theme.typography.fontFamily};
-          background-color: ${theme.palette.background.default};
-        }
-      `}</style>
+      <style jsx global>{``}</style>
     </>
   );
 }

@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import Head from "next/head";
 import theme from "../src/styles/theme";
 
 const Layout = ({ user, children }) => {
   const [sideBarVisible, toggleSideBarVisible] = useState(false);
   return (
     <div>
-      <Head>
-        <title>SPCA Clubs</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-          rel="stylesheet"
-        ></link>
-      </Head>
       <Header
         user={user}
         sideBarVisible={sideBarVisible}
