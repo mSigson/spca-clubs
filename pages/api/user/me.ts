@@ -11,11 +11,14 @@ export default mongoMiddleware(async (req, res, models) => {
     GET: async (response) => {
       try {
         const { user } = await auth0.getSession(req);
-        const existingUser = await User.findOne({ user_id: user.sub });
+        const existingUser = await User.findOne({ user_id: user.sub }).populate(
+          "clubs"
+        );
+
         let returnPayload = existingUser;
 
         if (!existingUser) {
-          const newUser: IUser = {
+          const newUser: Partial<IUser> = {
             given_name: user.given_name,
             family_name: user.family_name,
             nickname: user.nickname,

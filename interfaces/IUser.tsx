@@ -1,3 +1,5 @@
+import IClub from "./IClub";
+
 interface IUser {
   user_id: string;
   name: string;
@@ -6,8 +8,9 @@ interface IUser {
   nickname?: string;
   email: string;
   picture?: string;
+  clubs: Partial<IClub>[];
   locale: "en";
-  created_at?: Date;
+  created_at: Date;
 }
 
 export default IUser;

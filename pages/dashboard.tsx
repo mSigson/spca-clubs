@@ -20,4 +20,10 @@ const Dashboard = ({ user }) => {
   );
 };
 
+// Dashboard.getInitialProps = async (ctx) => {
+//   const res = await fetch("/api/user/clubs");
+//   const json = await res.json();
+//   return { clubs: res };
+// };
+
 export default requireAuthentication(Dashboard);

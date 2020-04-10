@@ -7,9 +7,9 @@ const SidebarLink = ({ href, icon, text, sideBarVisible }) => {
   const Icon = icon;
   return (
     <>
-      <Link href={href} className="sidebar-link">
+      <Link href={href}>
         <div className="sidebar-link-container">
-          <Icon fontSize={sideBarVisible ? "large" : "normal"} /> {text}
+          <Icon fontSize={sideBarVisible ? "large" : "inherit"} /> {text}
         </div>
       </Link>
       <style jsx>{`

@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
+import { Schema, connection, model } from "mongoose";
 import moment from "moment";
 
-delete mongoose.connection.models["Club"];
+delete connection.models["Club"];
 
-const ClubSchema = new mongoose.Schema({
+const ClubSchema = new Schema({
   name: {
     type: String,
     required: [true, "Club name is required"],
@@ -22,10 +22,12 @@ const ClubSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Club have number of members"],
   },
-  advisors: {
-    type: [String],
-    required: [true, "Club must have at least 1 advisor"],
-  },
+  advisors: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   created_at: {
     type: Date,
     required: [true, "Created is required"],
@@ -33,4 +35,4 @@ const ClubSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Club", ClubSchema);
+module.exports = model("Club", ClubSchema);

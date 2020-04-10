@@ -1,9 +1,9 @@
-import mongoose from "mongoose";
+import { Schema, connection, model } from "mongoose";
 import moment from "moment";
 
-delete mongoose.connection.models["User"];
+delete connection.models["User"];
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   user_id: {
     type: String,
     required: [true, "User_id is required"],
@@ -23,11 +23,17 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "en",
   },
+  clubs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Club",
+    },
+  ],
   created_at: {
     type: Date,
-    required: [true, "Created is required"],
     default: moment.utc(),
+    required: [true, "Created is required"],
   },
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = model("User", UserSchema);
