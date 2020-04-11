@@ -2899,6 +2899,11 @@ har-validator@~5.1.3:
     ajv "^6.5.5"
     har-schema "^2.0.0"
 
+harmony-reflect@^1.4.2:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/harmony-reflect/-/harmony-reflect-1.6.1.tgz#c108d4f2bb451efef7a37861fdbdae72c9bdefa9"
+  integrity sha512-WJTeyp0JzGtHcuMsi7rw2VwtkvLa+JyfEKJCFyfcS0+CDkjQ5lHPu7zEhFZP+PDSRrEgXa5Ah0l1MbgbE41XjA==
+
 has-ansi@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/has-ansi/-/has-ansi-2.0.0.tgz#34f5049ce1ecdf2b0649af3ef24e45ed35416d91"
@@ -3847,12 +3852,27 @@ mongodb@3.5.5:
   optionalDependencies:
     saslprep "^1.0.0"
 
+mongoose-extend-schema@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/mongoose-extend-schema/-/mongoose-extend-schema-1.0.0.tgz#6b9abf0a626de8e8aaa8c74a9b0dc240cc32d3d5"
+  integrity sha512-/fZtGli3ILtywDiAIhT0v1MbJyOREUsdX8H+Avd6LjpWaTcVWBg+UMg9RuCPw4xrQUNizxzB4/yklw2KndbnXg==
+  dependencies:
+    mongoose "*"
+
 mongoose-legacy-pluralize@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.9.7:
+mongoose-schema-extend@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/mongoose-schema-extend/-/mongoose-schema-extend-0.2.2.tgz#f63dd313c422a3871f5569e36b0d28ca1a224631"
+  integrity sha1-9j3TE8Qio4cfVWnjaw0oyhoiRjE=
+  dependencies:
+    harmony-reflect "^1.4.2"
+    owl-deepcopy "~0.0.1"
+
+mongoose@*, mongoose@^5.9.7:
   version "5.9.7"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.9.7.tgz#03c581860d0e2f60f6008f9457ab0c2905609875"
   integrity sha512-WJOBh9WMvivqBK8my9HFtSzSySKdUxJPNGAwswEakAasWUcPXJl3yHMtZ4ngGnKbwTT9KnAr75xamlt/PouR9w==
@@ -4251,6 +4271,11 @@ osenv@0:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
+
+owl-deepcopy@~0.0.1:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/owl-deepcopy/-/owl-deepcopy-0.0.6.tgz#e61c6934af0a38c255be95e5c7ee3fa8facaace3"
+  integrity sha1-5hxpNK8KOMJVvpXlx+4/qPrKrOM=
 
 p-any@^3.0.0:
   version "3.0.0"

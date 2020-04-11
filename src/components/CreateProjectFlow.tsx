@@ -7,6 +7,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 
+import IPetition from "interfaces/projects/IProject";
+
 const CategorySelector = ({ category, setStep, setProjectCategory }) => (
   <Button
     onClick={() => {
@@ -44,22 +46,34 @@ const CategorySelector = ({ category, setStep, setProjectCategory }) => (
 interface Category {
   key: string;
   title: string;
+  model: string;
 }
 const categories: Category[] = [
-  { key: "petition", title: "Petition" },
-  { key: "video-skit", title: "Video/Skit" },
-  { key: "poster", title: "Poster" },
-  { key: "letter-writing", title: "Letter Writing" },
-  { key: "fundraising", title: "Fundraising" },
-  { key: "display", title: "Display" },
+  { key: "petition", title: "Petition", model: "Petition" },
+  { key: "video-skit", title: "Video/Skit", model: "VideoSkit" },
+  { key: "poster", title: "Poster", model: "Poster" },
+  { key: "letter-writing", title: "Letter Writing", model: "LetterWriting" },
+  { key: "fundraising", title: "Fundraising", model: "Fundraising" },
+  { key: "display", title: "Display", model: "Display" },
 ];
 
-const CreateProject = () => {
+const CreateProject = ({ createNewProject, club }) => {
+  const [projectData, setProjectData] = useState({} as any);
   const [step, setStep] = useState(2 as number);
-  const [projectCategory, setProjectCategory] = useState(undefined as Category);
-  const [projectName, setProjectName] = useState(undefined as string);
-  const [animalGroup, setAnimalGroup] = useState(undefined as string);
-  const [animalIssue, setAnimalIssue] = useState(undefined as string);
+  const [projectCategory, setProjectCategory] = useState(
+    categories[0] as Category
+  );
+  const [projectName, setProjectName] = useState("cool project" as string);
+  const [animalGroup, setAnimalGroup] = useState("wildlife" as string);
+  const [animalIssue, setAnimalIssue] = useState("deforestation" as string);
+
+  const newProject: Partial<IPetition> = {
+    name: projectName,
+    animal_group: animalGroup,
+    animal_issue: animalIssue,
+    type: projectCategory?.key,
+    club,
+  };
 
   return (
     <>
@@ -83,7 +97,13 @@ const CreateProject = () => {
         {step === 2 && (
           <div className="step-container">
             <h3>Complete the following form</h3>
-            <form autoComplete="off">
+            <form
+              autoComplete="off"
+              onSubmit={(e) => {
+                e.preventDefault();
+                createNewProject(projectData);
+              }}
+            >
               <TextField
                 id="project-name-input"
                 label="Project Name"
@@ -135,7 +155,11 @@ const CreateProject = () => {
                   }}
                 />
               </div>
-              <PetitionForm />
+              <PetitionForm
+                setProjectData={(projectData) =>
+                  setProjectData({ ...newProject, ...projectData })
+                }
+              />
               <div className="form-action-buttons">
                 <Button
                   variant="outlined"

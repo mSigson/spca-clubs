@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { countWords } from "utils/countWords";
 import ImageInput from "components/ImageInput";
+import IPetition from "interfaces/projects/IPetition";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,17 +17,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PetitionForm = () => {
-  const [petitionTitle, setPetitionTitle] = useState(undefined as string);
+const PetitionForm = ({ setProjectData }) => {
+  const [petitionTitle, setPetitionTitle] = useState(
+    "what a dope petition" as string
+  );
   const [numOfSignatures, setNumOfSignatures] = useState(0 as number);
 
-  const [petitionExplanation, setPetitionExplanation] = useState(
-    undefined as string
+  const [petitionDescription, setPetitionDescription] = useState(
+    "a dope petition" as string
   );
 
   const [attachedImages, setAttachedImages] = useState([] as string[]);
 
   const classes = useStyles();
+
+  const petitionData: Partial<IPetition> = {
+    petition_title: petitionTitle,
+    num_of_signatures: numOfSignatures,
+    description: petitionDescription,
+  };
+
+  useEffect(() => {
+    setProjectData(petitionData);
+  }, [petitionTitle, numOfSignatures, petitionDescription]);
 
   return (
     <>
@@ -57,9 +70,9 @@ const PetitionForm = () => {
           id="explanation-input"
           label="Petition Explanation"
           margin="normal"
-          error={countWords(petitionExplanation) > 500}
-          value={petitionExplanation}
-          onChange={(e) => setPetitionExplanation(e.target.value)}
+          error={countWords(petitionDescription) > 500}
+          value={petitionDescription}
+          onChange={(e) => setPetitionDescription(e.target.value)}
           variant="outlined"
           multiline
           helperText="Max length 500 words"

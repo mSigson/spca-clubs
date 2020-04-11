@@ -32,6 +32,15 @@ const ClubSchema = new Schema({
       ref: "User",
     },
   ],
+  projects: {
+    petitions: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Petition",
+        default: [],
+      },
+    ],
+  },
   created_at: {
     type: Date,
     required: [true, "Created is required"],
