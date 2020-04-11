@@ -38,6 +38,7 @@ const Header = ({ user, sideBarVisible, toggleSideBarVisible, width }) => {
           justify-content: space-between;
           align-items: center;
           padding: 0 24px;
+          font-weight: 700;
           height: ${theme.overrides.topBarHeight};
           color: ${theme.palette.text.primary};
           font-family: ${theme.typography.fontFamily};
