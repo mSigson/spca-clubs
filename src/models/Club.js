@@ -40,6 +40,13 @@ const ClubSchema = new Schema({
         default: [],
       },
     ],
+    letters: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Letter",
+        default: [],
+      },
+    ],
   },
   created_at: {
     type: Date,

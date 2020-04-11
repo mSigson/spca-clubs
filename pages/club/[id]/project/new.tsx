@@ -17,8 +17,8 @@ const createNewProject = async (newClubData, club) => {
       body: JSON.stringify(newClubData),
     });
 
-    const { data: newClubModel } = await res.json();
-    club.projects.push(newClubModel);
+    const { data: newProjectModel } = await res.json();
+    club.projects[newProjectModel.type].push(newProjectModel);
   } catch (e) {
     console.log(e);
   }

@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import User from "models/User";
 import Club from "models/Club";
 import Petition from "models/Petition";
+import Letter from "models/Letter";
 
 const connection = {};
 
@@ -22,6 +23,7 @@ const dbConnect = async () => {
     User,
     Club,
     Petition,
+    Letter,
   };
 
   return connection.models;

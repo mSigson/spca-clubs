@@ -10,9 +10,9 @@ export default mongoMiddleware(async (req, res, models) => {
       try {
         const _id = req.url.split("/")[3];
 
-        const clubWIthPopulatedProjects = await Club.findOne({ _id }).populate(
-          "projects.petitions"
-        );
+        const clubWIthPopulatedProjects = await Club.findOne({ _id })
+          .populate("projects.petitions")
+          .populate("projects.letters");
 
         const projects = Object.keys(clubWIthPopulatedProjects.projects)
           .reduce((a, b) => {

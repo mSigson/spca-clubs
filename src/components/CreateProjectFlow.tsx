@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import PetitionForm from "components/forms/Petition";
-import TextField from "@material-ui/core/TextField";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-
-import IPetition from "interfaces/projects/IProject";
+import LetterForm from "components/forms/Letter";
 
 const CategorySelector = ({ category, setStep, setProjectCategory }) => (
   <Button
@@ -46,34 +40,21 @@ const CategorySelector = ({ category, setStep, setProjectCategory }) => (
 interface Category {
   key: string;
   title: string;
-  model: string;
 }
 const categories: Category[] = [
-  { key: "petition", title: "Petition", model: "Petition" },
-  { key: "video-skit", title: "Video/Skit", model: "VideoSkit" },
-  { key: "poster", title: "Poster", model: "Poster" },
-  { key: "letter-writing", title: "Letter Writing", model: "LetterWriting" },
-  { key: "fundraising", title: "Fundraising", model: "Fundraising" },
-  { key: "display", title: "Display", model: "Display" },
+  { key: "petition", title: "Petition" },
+  { key: "video", title: "Video/Skit" },
+  { key: "poster", title: "Poster" },
+  { key: "letter", title: "Letter Writing" },
+  { key: "fundraising", title: "Fundraising" },
+  { key: "display", title: "Display" },
 ];
 
 const CreateProject = ({ createNewProject, club }) => {
-  const [projectData, setProjectData] = useState({} as any);
-  const [step, setStep] = useState(2 as number);
+  const [step, setStep] = useState(1 as number);
   const [projectCategory, setProjectCategory] = useState(
     categories[0] as Category
   );
-  const [projectName, setProjectName] = useState("cool project" as string);
-  const [animalGroup, setAnimalGroup] = useState("wildlife" as string);
-  const [animalIssue, setAnimalIssue] = useState("deforestation" as string);
-
-  const newProject: Partial<IPetition> = {
-    name: projectName,
-    animal_group: animalGroup,
-    animal_issue: animalIssue,
-    type: projectCategory?.key,
-    club,
-  };
 
   return (
     <>
@@ -97,88 +78,20 @@ const CreateProject = ({ createNewProject, club }) => {
         {step === 2 && (
           <div className="step-container">
             <h3>Complete the following form</h3>
-            <form
-              autoComplete="off"
-              onSubmit={(e) => {
-                e.preventDefault();
-                createNewProject(projectData);
-              }}
+            {projectCategory?.key === "petition" && (
+              <PetitionForm club={club} createNewProject={createNewProject} />
+            )}
+            {projectCategory?.key === "letter" && (
+              <LetterForm club={club} createNewProject={createNewProject} />
+            )}
+            <Button
+              variant="outlined"
+              color="primary"
+              size="large"
+              onClick={() => setStep(1)}
             >
-              <TextField
-                id="project-name-input"
-                label="Project Name"
-                margin="normal"
-                value={projectName}
-                required={true}
-                onChange={(e) => setProjectName(e.target.value)}
-                variant="outlined"
-                style={{
-                  width: "50%",
-                }}
-              />
-              <div className="input-container">
-                <FormControl
-                  variant="outlined"
-                  style={{
-                    width: "40%",
-                    marginRight: "12px",
-                  }}
-                >
-                  <InputLabel id="demo-simple-select-outlined-label">
-                    Animal Group
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    value={animalGroup}
-                    onChange={(e) => setAnimalGroup(e.target.value.toString())}
-                    label="Animal Group"
-                  >
-                    <MenuItem value="pets">Pets</MenuItem>
-                    <MenuItem value="farm">Farm</MenuItem>
-                    <MenuItem value="wildlife">Wildlife</MenuItem>
-                    <MenuItem value="exotic">Exotic</MenuItem>
-                    <MenuItem value="environment">Environment</MenuItem>
-                  </Select>
-                </FormControl>
-                <TextField
-                  id="animal-issue-input"
-                  label="Animal Issue"
-                  margin="normal"
-                  value={animalIssue}
-                  required={true}
-                  onChange={(e) => setAnimalIssue(e.target.value)}
-                  variant="outlined"
-                  style={{
-                    width: "40%",
-                    margin: 0,
-                  }}
-                />
-              </div>
-              <PetitionForm
-                setProjectData={(projectData) =>
-                  setProjectData({ ...newProject, ...projectData })
-                }
-              />
-              <div className="form-action-buttons">
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  size="large"
-                  onClick={() => setStep(1)}
-                >
-                  Back
-                </Button>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  size="large"
-                >
-                  Create
-                </Button>
-              </div>
-            </form>
+              Back
+            </Button>
           </div>
         )}
       </div>
@@ -204,6 +117,24 @@ const CreateProject = ({ createNewProject, club }) => {
           display: flex;
           margin-top: 24px;
           justify-content: space-between;
+        }
+
+        .uploaded-images {
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 12px;
+        }
+        .uploaded-image-container {
+          margin-right: 24px;
+          width: 200px;
+          border-radius: 8px;
+        }
+
+        .uploaded-image-container img {
+          width: 100%;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 8px;
         }
       `}</style>
     </>
