@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import theme from "styles/theme";
+import { PROJECT_TYPE_TITLES } from "appConstants";
 
 const ProjectCard = ({ project }) => {
   return (
@@ -8,8 +9,11 @@ const ProjectCard = ({ project }) => {
       <Link href={`/club/${project.club}/project/${project._id}`}>
         <div className="card">
           <h4>{project.name}</h4>
-          <div className="img-container">
-            <img src={`/assets/badges/${project.type}.png`} />
+          <div className="project-type">
+            <p>{PROJECT_TYPE_TITLES[project.type]}</p>
+            <div className="img-container">
+              <img src={`/assets/badges/${project.type}.png`} />
+            </div>
           </div>
         </div>
       </Link>
@@ -28,10 +32,17 @@ const ProjectCard = ({ project }) => {
           cursor: pointer;
         }
 
-        .card .img-container {
+        .project-type {
+          display: flex;
+          align-items: center;
           align-self: flex-end;
+          color: #000;
+        }
+
+        .project-type .img-container {
           width: 40px;
           height: 40px;
+          margin-left: 12px;
         }
 
         img {

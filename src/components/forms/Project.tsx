@@ -14,6 +14,10 @@ import IClub from "interfaces/IClub";
 import IProject from "interfaces/projects/IProject";
 import IPetition from "interfaces/projects/IPetition";
 import ILetter from "interfaces/projects/ILetter";
+import IPoster from "interfaces/projects/IPoster";
+import IDisplay from "interfaces/projects/IDisplay";
+import IFundraising from "interfaces/projects/IFundraising";
+import IVideo from "interfaces/projects/IVideo";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,7 +41,13 @@ interface ProjectFormProps {
     | "poster"
     | "fundraising"
     | "display";
-  formData?: Partial<IPetition> | Partial<ILetter>;
+  formData?:
+    | Partial<IPetition>
+    | Partial<ILetter>
+    | Partial<IVideo>
+    | Partial<IPoster>
+    | Partial<IFundraising>
+    | Partial<IDisplay>;
   children?: any;
 }
 

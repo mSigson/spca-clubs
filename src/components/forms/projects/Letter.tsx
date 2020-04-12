@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import ILetter from "interfaces/projects/ILetter";
 import ProjectForm from "components/forms/Project";
+import { LETTER } from "appConstants";
 
 const PetitionForm = ({ club, createNewProject }) => {
   const [letterRecipient, setLetterRecipient] = useState("Mr Dope" as string);
@@ -18,7 +19,7 @@ const PetitionForm = ({ club, createNewProject }) => {
     <ProjectForm
       createNewProject={createNewProject}
       club={club}
-      projectType="letter"
+      projectType={LETTER}
       formData={LetterData}
     >
       <TextField

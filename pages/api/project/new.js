@@ -1,5 +1,13 @@
 import mongoMiddleware from "utils/mongo-middleware";
 import apiHandler from "utils/apiHandler";
+import {
+  LETTER,
+  PETITION,
+  POSTER,
+  DISPLAY,
+  FUNDRAISING,
+  VIDEO,
+} from "appConstants";
 
 export default mongoMiddleware(async (req, res, models) => {
   const { method, body } = req;
@@ -21,21 +29,19 @@ export default mongoMiddleware(async (req, res, models) => {
       try {
         const clubModel = await Club.findOne({ _id: newProject.club._id });
 
-        if (newProject.type === "petition") {
+        if (newProject.type === PETITION) {
           newProjectModel = await new Petition(newProject).save();
-        } else if (newProject.type === "letter") {
+        } else if (newProject.type === LETTER) {
           newProjectModel = await new Letter(newProject).save();
-        } else if (newProject.type === "video") {
+        } else if (newProject.type === VIDEO) {
           newProjectModel = await new Video(newProject).save();
-        } else if (newProject.type === "display") {
+        } else if (newProject.type === DISPLAY) {
           newProjectModel = await new Display(newProject).save();
-        } else if (newProject.type === "fundraising") {
+        } else if (newProject.type === FUNDRAISING) {
           newProjectModel = await new Fundraising(newProject).save();
-        } else if (newProject.type === "poster") {
+        } else if (newProject.type === POSTER) {
           newProjectModel = await new Poster(newProject).save();
         }
-
-        console.log(newProjectModel.type);
 
         clubModel.projects[`${newProjectModel.type}s`].push(newProjectModel);
         await clubModel.save();

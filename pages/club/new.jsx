@@ -15,7 +15,6 @@ const createNewClub = async (newClubData, user) => {
     });
     const { data: newClubModel } = await res.json();
     user.clubs.push(newClubModel);
-    console.log(user);
   } catch (e) {
     console.log(e);
   }

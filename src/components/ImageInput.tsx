@@ -13,7 +13,6 @@ const ImageUploadCard = ({ classes, addImage }) => {
     reader.onloadend = function (e) {
       addImage(reader.result);
     }.bind(this);
-    console.log(url);
   };
 
   return (

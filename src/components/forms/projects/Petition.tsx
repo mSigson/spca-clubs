@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import { countWords } from "utils/countWords";
 import IPetition from "interfaces/projects/IPetition";
 import ProjectForm from "components/forms/Project";
+import { PETITION } from "appConstants";
 
 const PetitionForm = ({ club, createNewProject }) => {
   const [petitionTitle, setPetitionTitle] = useState(undefined as string);
@@ -21,7 +22,7 @@ const PetitionForm = ({ club, createNewProject }) => {
     <ProjectForm
       createNewProject={createNewProject}
       club={club}
-      projectType="petition"
+      projectType={PETITION}
       formData={petitionData}
     >
       <TextField

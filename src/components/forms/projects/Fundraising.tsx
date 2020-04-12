@@ -4,6 +4,7 @@ import IFundraising from "interfaces/projects/IFundraising";
 import ProjectForm from "components/forms/Project";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+import { FUNDRAISING } from "appConstants";
 
 const FundraisingForm = ({ club, createNewProject }) => {
   const [raised, setRaised] = useState(undefined as number);
@@ -18,7 +19,7 @@ const FundraisingForm = ({ club, createNewProject }) => {
     <ProjectForm
       createNewProject={createNewProject}
       club={club}
-      projectType="fundraising"
+      projectType={FUNDRAISING}
       formData={fundraisingData}
     >
       <TextField

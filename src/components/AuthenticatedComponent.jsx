@@ -17,7 +17,7 @@ const requireAuthentication = (Component) => {
     return (
       <div>
         {loading ? (
-          <div>Loading...</div>
+          <Layout>Loading...</Layout>
         ) : user ? (
           <UserProvider value={{ user, loading }}>
             <Component user={user} {...props} />

@@ -14,14 +14,10 @@
     "isomorphic-unfetch": "^3.0.0",
     "moment": "^2.24.0",
     "mongoose": "^5.9.7",
-    "mongoose-extend-schema": "^1.0.0",
-    "mongoose-schema-extend": "^0.2.2",
     "next": "9.3.4",
-    "node-sass": "^4.13.1",
     "path": "^0.12.7",
     "react": "16.13.1",
-    "react-dom": "16.13.1",
-    "sass": "^1.26.3"
+    "react-dom": "16.13.1"
   },
   "devDependencies": {
     "@types/node": "^13.11.0",

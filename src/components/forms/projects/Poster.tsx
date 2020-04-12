@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import IPoster from "interfaces/projects/IPoster";
 import ProjectForm from "components/forms/Project";
+import { POSTER } from "appConstants";
 
 const PosterForm = ({ club, createNewProject }) => {
   const [postLocation, setPostLocation] = useState(undefined as string);
@@ -16,7 +17,7 @@ const PosterForm = ({ club, createNewProject }) => {
     <ProjectForm
       createNewProject={createNewProject}
       club={club}
-      projectType="poster"
+      projectType={POSTER}
       formData={posterData}
     >
       <TextField

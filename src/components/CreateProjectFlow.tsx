@@ -6,6 +6,15 @@ import VideoForm from "components/forms/projects/Video";
 import DisplayForm from "components/forms/projects/Display";
 import FundraisingForm from "components/forms/projects/Fundraising";
 import PosterForm from "components/forms/projects/Poster";
+import {
+  LETTER,
+  PETITION,
+  POSTER,
+  DISPLAY,
+  FUNDRAISING,
+  VIDEO,
+  PROJECT_TYPE_TITLES,
+} from "appConstants";
 
 const CategorySelector = ({ category, setStep, setProjectCategory }) => (
   <Button
@@ -46,12 +55,12 @@ interface Category {
   title: string;
 }
 const categories: Category[] = [
-  { type: "petition", title: "Petition" },
-  { type: "video", title: "Video/Skit" },
-  { type: "poster", title: "Poster" },
-  { type: "letter", title: "Letter Writing" },
-  { type: "fundraising", title: "Fundraising" },
-  { type: "display", title: "Display" },
+  { type: PETITION, title: PROJECT_TYPE_TITLES[PETITION] },
+  { type: VIDEO, title: PROJECT_TYPE_TITLES[VIDEO] },
+  { type: POSTER, title: PROJECT_TYPE_TITLES[POSTER] },
+  { type: LETTER, title: PROJECT_TYPE_TITLES[LETTER] },
+  { type: FUNDRAISING, title: PROJECT_TYPE_TITLES[FUNDRAISING] },
+  { type: DISPLAY, title: PROJECT_TYPE_TITLES[DISPLAY] },
 ];
 
 const CreateProject = ({ createNewProject, club }) => {
@@ -82,25 +91,25 @@ const CreateProject = ({ createNewProject, club }) => {
         {step === 2 && (
           <div className="step-container">
             <h3>{projectCategory?.title}</h3>
-            {projectCategory?.type === "petition" && (
+            {projectCategory?.type === PETITION && (
               <PetitionForm club={club} createNewProject={createNewProject} />
             )}
-            {projectCategory?.type === "letter" && (
+            {projectCategory?.type === LETTER && (
               <LetterForm club={club} createNewProject={createNewProject} />
             )}
-            {projectCategory?.type === "video" && (
+            {projectCategory?.type === VIDEO && (
               <VideoForm club={club} createNewProject={createNewProject} />
             )}
-            {projectCategory?.type === "display" && (
+            {projectCategory?.type === DISPLAY && (
               <DisplayForm club={club} createNewProject={createNewProject} />
             )}
-            {projectCategory?.type === "fundraising" && (
+            {projectCategory?.type === FUNDRAISING && (
               <FundraisingForm
                 club={club}
                 createNewProject={createNewProject}
               />
             )}
-            {projectCategory?.type === "poster" && (
+            {projectCategory?.type === POSTER && (
               <PosterForm club={club} createNewProject={createNewProject} />
             )}
             <Button

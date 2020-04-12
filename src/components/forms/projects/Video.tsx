@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import IVideo from "interfaces/projects/IVideo";
 import ProjectForm from "components/forms/Project";
+import { VIDEO } from "appConstants";
 
 const PetitionForm = ({ club, createNewProject }) => {
   const [audience, setAudience] = useState(undefined as string);
@@ -16,7 +17,7 @@ const PetitionForm = ({ club, createNewProject }) => {
     <ProjectForm
       createNewProject={createNewProject}
       club={club}
-      projectType="video"
+      projectType={VIDEO}
       formData={videoData}
     >
       <TextField
