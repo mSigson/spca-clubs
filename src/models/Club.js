@@ -68,7 +68,7 @@ const ClubSchema = new Schema({
         default: [],
       },
     ],
-    fundraising: [
+    fundraisings: [
       {
         type: Schema.Types.ObjectId,
         ref: "Fundraising",

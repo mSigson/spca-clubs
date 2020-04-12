@@ -8,6 +8,7 @@ interface IProject {
   type: string;
   learning_outcome: string;
   club: string | IClub;
+  created_at: Date;
 }
 
 export default IProject;

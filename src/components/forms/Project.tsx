@@ -48,13 +48,11 @@ const ProjectForm = ({
   formData,
   children,
 }: ProjectFormProps) => {
-  const [projectName, setProjectName] = useState(projectType as string);
-  const [animalGroup, setAnimalGroup] = useState("wildlife" as string);
-  const [animalIssue, setAnimalIssue] = useState("deforestation" as string);
-  const [learningOutcome, setLearningOutcome] = useState(
-    "a dope petition" as string
-  );
-  const [attachedImages, setAttachedImages] = useState([] as string[]);
+  const [projectName, setProjectName] = useState(undefined as string);
+  const [animalGroup, setAnimalGroup] = useState(undefined as string);
+  const [animalIssue, setAnimalIssue] = useState(undefined as string);
+  const [learningOutcome, setLearningOutcome] = useState(undefined as string);
+  const [attachedImages, setAttachedImages] = useState(undefined as string[]);
 
   const newProject: Partial<IProject> = {
     name: projectName,
@@ -147,7 +145,7 @@ const ProjectForm = ({
           setAttachedImages([...attachedImages, newImage])
         }
       />
-      {attachedImages.length > 0 && (
+      {attachedImages && attachedImages.length > 0 && (
         <ul className="uploaded-images">
           {attachedImages.map((image) => (
             <li key={`image-${image}`} className="uploaded-image-container">

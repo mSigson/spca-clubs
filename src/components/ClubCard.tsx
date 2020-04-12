@@ -39,6 +39,9 @@ const ClubCard = ({ club }) => {
         h4 {
           font-size: 21px;
           color: ${theme.palette.primary.main};
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       `}</style>
     </>

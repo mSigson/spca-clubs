@@ -7,6 +7,7 @@ import IFundraising from "interfaces/projects/IFundraising";
 import IPoster from "interfaces/projects/IPoster";
 
 interface IClub {
+  _id: string;
   name: string;
   avatar: string;
   age_range: {

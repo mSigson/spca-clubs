@@ -5,13 +5,10 @@ import IPetition from "interfaces/projects/IPetition";
 import ProjectForm from "components/forms/Project";
 
 const PetitionForm = ({ club, createNewProject }) => {
-  const [petitionTitle, setPetitionTitle] = useState(
-    "what a dope petition" as string
-  );
-  const [numOfSignatures, setNumOfSignatures] = useState(0 as number);
-
+  const [petitionTitle, setPetitionTitle] = useState(undefined as string);
+  const [numOfSignatures, setNumOfSignatures] = useState(undefined as number);
   const [petitionDescription, setPetitionDescription] = useState(
-    "a dope petition" as string
+    undefined as string
   );
 
   const petitionData: Partial<IPetition> = {

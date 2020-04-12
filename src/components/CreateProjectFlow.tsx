@@ -60,6 +60,8 @@ const CreateProject = ({ createNewProject, club }) => {
     categories[0] as Category
   );
 
+  console.log(step);
+
   return (
     <>
       <div className="create-project-container">

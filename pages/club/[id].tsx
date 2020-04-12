@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
+import moment from "moment";
 
 import Layout from "components/Layout";
 import Link from "next/link";
@@ -10,10 +11,10 @@ import theme from "styles/theme";
 import requireAuthentication from "components/AuthenticatedComponent";
 import ProjectCard from "components/ProjectCard";
 
-import IPetition from "interfaces/projects/IProject";
-
 import { useUser } from "utils/user";
+
 import { useRouter } from "next/router";
+import IProject from "interfaces/projects/IProject";
 
 const getProjects = async (club, setProjects) => {
   try {
@@ -29,7 +30,7 @@ const ClubPage = () => {
   const router = useRouter();
   const { user } = useUser();
 
-  const [projects, setProjects] = useState(undefined as IPetition[]);
+  const [projects, setProjects] = useState(undefined as IProject[]);
 
   const club = user.clubs.find((club) => club._id === router.query.id);
 
@@ -48,11 +49,15 @@ const ClubPage = () => {
         <ul className="projects-container">
           {projects &&
             projects.length > 0 &&
-            projects.map((project) => (
-              <li key={project._id}>
-                <ProjectCard project={project} />
-              </li>
-            ))}
+            projects
+              .sort((a: IProject, b: IProject) =>
+                moment(b.created_at).isBefore(a.created_at) ? 1 : -1
+              )
+              .map((project) => (
+                <li key={project._id}>
+                  <ProjectCard project={project} />
+                </li>
+              ))}
         </ul>
       </div>
       <style jsx>{`
@@ -72,10 +77,9 @@ const ClubPage = () => {
           color: ${theme.palette.primary.main};
         }
 
-        .form-container {
-          background: white;
-          padding: 24px;
-          border-radius: 8px;
+        .projects-container li {
+          margin-right: 24px;
+          margin-bottom: 24px;
         }
       `}</style>
     </Layout>

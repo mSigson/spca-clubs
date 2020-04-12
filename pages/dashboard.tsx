@@ -6,9 +6,10 @@ import AddIcon from "@material-ui/icons/Add";
 import Layout from "components/Layout";
 import requireAuthentication from "components/AuthenticatedComponent";
 import ClubCard from "components/ClubCard";
+import IClub from "interfaces/IClub";
 
 const Dashboard = ({ user }) => {
-  const { clubs } = user;
+  const clubs: IClub[] = user.clubs;
   return (
     <Layout user={user}>
       <div>
