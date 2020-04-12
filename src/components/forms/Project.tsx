@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
@@ -8,6 +8,7 @@ import FormControl from "@material-ui/core/FormControl";
 import ImageInput from "components/ImageInput";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import { countWords } from "utils/countWords";
 
 import IClub from "interfaces/IClub";
 import IProject from "interfaces/projects/IProject";
@@ -29,9 +30,15 @@ const useStyles = makeStyles((theme) => ({
 interface ProjectFormProps {
   club: IClub;
   createNewProject: any;
-  projectType: "petition" | "letter";
-  formData: Partial<IPetition> | Partial<ILetter>;
-  children: any;
+  projectType:
+    | "petition"
+    | "letter"
+    | "video"
+    | "poster"
+    | "fundraising"
+    | "display";
+  formData?: Partial<IPetition> | Partial<ILetter>;
+  children?: any;
 }
 
 const ProjectForm = ({
@@ -41,9 +48,12 @@ const ProjectForm = ({
   formData,
   children,
 }: ProjectFormProps) => {
-  const [projectName, setProjectName] = useState("cool project" as string);
+  const [projectName, setProjectName] = useState(projectType as string);
   const [animalGroup, setAnimalGroup] = useState("wildlife" as string);
   const [animalIssue, setAnimalIssue] = useState("deforestation" as string);
+  const [learningOutcome, setLearningOutcome] = useState(
+    "a dope petition" as string
+  );
   const [attachedImages, setAttachedImages] = useState([] as string[]);
 
   const newProject: Partial<IProject> = {
@@ -51,6 +61,7 @@ const ProjectForm = ({
     animal_group: animalGroup,
     animal_issue: animalIssue,
     type: projectType,
+    learning_outcome: learningOutcome,
     club,
   };
 
@@ -116,7 +127,21 @@ const ProjectForm = ({
           }}
         />
       </div>
-      {children}
+      {children && children}
+      <TextField
+        id="learning-outcomes-input"
+        label="Learning Outcomes"
+        margin="normal"
+        error={countWords(learningOutcome) > 500}
+        value={learningOutcome}
+        onChange={(e) => setLearningOutcome(e.target.value)}
+        variant="outlined"
+        multiline
+        helperText="Max length 500 words"
+        style={{
+          width: "100%",
+        }}
+      />
       <ImageInput
         addImage={(newImage) =>
           setAttachedImages([...attachedImages, newImage])
@@ -144,6 +169,24 @@ const ProjectForm = ({
 
         .input-container {
           margin-top: 8px;
+        }
+
+        .uploaded-images {
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 12px;
+        }
+        .uploaded-image-container {
+          margin-right: 24px;
+          width: 200px;
+          border-radius: 8px;
+        }
+
+        .uploaded-image-container img {
+          width: 100%;
+          height: 150px;
+          object-fit: cover;
+          border-radius: 8px;
         }
       `}</style>
     </form>

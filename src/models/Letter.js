@@ -14,13 +14,6 @@ const LetterSchema = new Schema({
       message: "Letter writing description must be less than 500 words",
     },
   },
-  learning_outcome: {
-    type: String,
-    validate: {
-      validator: (v) => countWords(v) <= 500,
-      message: "Letter writing description must be less than 500 words",
-    },
-  },
 });
 
 module.exports = model("Letter", LetterSchema);

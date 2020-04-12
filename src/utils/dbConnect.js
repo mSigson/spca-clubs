@@ -1,8 +1,13 @@
 import mongoose from "mongoose";
 import User from "models/User";
 import Club from "models/Club";
+
 import Petition from "models/Petition";
 import Letter from "models/Letter";
+import Video from "models/Video";
+import Display from "models/Display";
+import Poster from "models/Poster";
+import Fundraising from "models/Fundraising";
 
 const connection = {};
 
@@ -24,6 +29,10 @@ const dbConnect = async () => {
     Club,
     Petition,
     Letter,
+    Video,
+    Display,
+    Poster,
+    Fundraising,
   };
 
   return connection.models;

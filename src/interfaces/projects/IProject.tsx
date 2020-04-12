@@ -6,6 +6,7 @@ interface IProject {
   animal_group: string;
   animal_issue: string;
   type: string;
+  learning_outcome: string;
   club: string | IClub;
 }
 

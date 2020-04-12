@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import PetitionForm from "components/forms/Petition";
-import LetterForm from "components/forms/Letter";
+import PetitionForm from "components/forms/projects/Petition";
+import LetterForm from "components/forms/projects/Letter";
+import VideoForm from "components/forms/projects/Video";
+import DisplayForm from "components/forms/projects/Display";
+import FundraisingForm from "components/forms/projects/Fundraising";
+import PosterForm from "components/forms/projects/Poster";
 
 const CategorySelector = ({ category, setStep, setProjectCategory }) => (
   <Button
@@ -12,7 +16,7 @@ const CategorySelector = ({ category, setStep, setProjectCategory }) => (
   >
     <div className="category">
       <div className="category-img-container">
-        <img src={`/assets/badges/${category.key}.png`} />
+        <img src={`/assets/badges/${category.type}.png`} />
       </div>
       <p className="category-title">{category.title}</p>
     </div>
@@ -38,16 +42,16 @@ const CategorySelector = ({ category, setStep, setProjectCategory }) => (
 );
 
 interface Category {
-  key: string;
+  type: string;
   title: string;
 }
 const categories: Category[] = [
-  { key: "petition", title: "Petition" },
-  { key: "video", title: "Video/Skit" },
-  { key: "poster", title: "Poster" },
-  { key: "letter", title: "Letter Writing" },
-  { key: "fundraising", title: "Fundraising" },
-  { key: "display", title: "Display" },
+  { type: "petition", title: "Petition" },
+  { type: "video", title: "Video/Skit" },
+  { type: "poster", title: "Poster" },
+  { type: "letter", title: "Letter Writing" },
+  { type: "fundraising", title: "Fundraising" },
+  { type: "display", title: "Display" },
 ];
 
 const CreateProject = ({ createNewProject, club }) => {
@@ -77,12 +81,27 @@ const CreateProject = ({ createNewProject, club }) => {
         )}
         {step === 2 && (
           <div className="step-container">
-            <h3>Complete the following form</h3>
-            {projectCategory?.key === "petition" && (
+            <h3>{projectCategory?.title}</h3>
+            {projectCategory?.type === "petition" && (
               <PetitionForm club={club} createNewProject={createNewProject} />
             )}
-            {projectCategory?.key === "letter" && (
+            {projectCategory?.type === "letter" && (
               <LetterForm club={club} createNewProject={createNewProject} />
+            )}
+            {projectCategory?.type === "video" && (
+              <VideoForm club={club} createNewProject={createNewProject} />
+            )}
+            {projectCategory?.type === "display" && (
+              <DisplayForm club={club} createNewProject={createNewProject} />
+            )}
+            {projectCategory?.type === "fundraising" && (
+              <FundraisingForm
+                club={club}
+                createNewProject={createNewProject}
+              />
+            )}
+            {projectCategory?.type === "poster" && (
+              <PosterForm club={club} createNewProject={createNewProject} />
             )}
             <Button
               variant="outlined"
@@ -96,6 +115,9 @@ const CreateProject = ({ createNewProject, club }) => {
         )}
       </div>
       <style jsx>{`
+        h3 {
+          margin-bottom: 12px;
+        }
         .category-container {
           display: flex;
           flex-wrap: wrap;
@@ -117,24 +139,6 @@ const CreateProject = ({ createNewProject, club }) => {
           display: flex;
           margin-top: 24px;
           justify-content: space-between;
-        }
-
-        .uploaded-images {
-          display: flex;
-          flex-wrap: wrap;
-          margin-top: 12px;
-        }
-        .uploaded-image-container {
-          margin-right: 24px;
-          width: 200px;
-          border-radius: 8px;
-        }
-
-        .uploaded-image-container img {
-          width: 100%;
-          height: 150px;
-          object-fit: cover;
-          border-radius: 8px;
         }
       `}</style>
     </>

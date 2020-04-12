@@ -1,5 +1,6 @@
 import { Schema } from "mongoose";
 import moment from "moment";
+import { countWords } from "utils/countWords";
 
 export default {
   name: {
@@ -21,6 +22,14 @@ export default {
   club: {
     type: Schema.Types.ObjectId,
     ref: "Club",
+    required: [true, "Project club is required"],
+  },
+  learning_outcome: {
+    type: String,
+    validate: {
+      validator: (v) => countWords(v) <= 500,
+      message: "Project learning outcomes must be less than 500 words",
+    },
   },
   created_at: {
     type: Date,

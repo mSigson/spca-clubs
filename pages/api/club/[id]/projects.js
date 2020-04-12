@@ -12,6 +12,10 @@ export default mongoMiddleware(async (req, res, models) => {
 
         const clubWIthPopulatedProjects = await Club.findOne({ _id })
           .populate("projects.petitions")
+          .populate("projects.displays")
+          .populate("projects.posters")
+          .populate("projects.videos")
+          .populate("projects.fundraisings")
           .populate("projects.letters");
 
         const projects = Object.keys(clubWIthPopulatedProjects.projects)

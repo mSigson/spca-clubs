@@ -47,6 +47,34 @@ const ClubSchema = new Schema({
         default: [],
       },
     ],
+    videos: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Video",
+        default: [],
+      },
+    ],
+    displays: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Display",
+        default: [],
+      },
+    ],
+    posters: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Poster",
+        default: [],
+      },
+    ],
+    fundraising: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Fundraising",
+        default: [],
+      },
+    ],
   },
   created_at: {
     type: Date,

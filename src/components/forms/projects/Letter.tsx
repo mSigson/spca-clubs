@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
-import { countWords } from "utils/countWords";
 import ILetter from "interfaces/projects/ILetter";
 import ProjectForm from "components/forms/Project";
 
@@ -10,14 +9,9 @@ const PetitionForm = ({ club, createNewProject }) => {
     "letter asking for 1 million dollars" as string
   );
 
-  const [learningOutcome, setLearningOutcome] = useState(
-    "a dope petition" as string
-  );
-
   const LetterData: Partial<ILetter> = {
     letter_recipient: letterRecipient,
     description,
-    learning_outcome: learningOutcome,
   };
 
   return (
@@ -44,20 +38,6 @@ const PetitionForm = ({ club, createNewProject }) => {
         margin="normal"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        variant="outlined"
-        multiline
-        helperText="Max length 500 words"
-        style={{
-          width: "100%",
-        }}
-      />
-      <TextField
-        id="explanation-input"
-        label="Letter Explanation"
-        margin="normal"
-        error={countWords(learningOutcome) > 500}
-        value={learningOutcome}
-        onChange={(e) => setLearningOutcome(e.target.value)}
         variant="outlined"
         multiline
         helperText="Max length 500 words"
