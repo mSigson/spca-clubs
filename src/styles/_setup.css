@@ -177,6 +177,15 @@ h6 {
   list-style: none;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 @font-face {
   font-family: "Roboto";
   src: url("../typography/Roboto/Roboto-Regular.ttf") format("ttf");

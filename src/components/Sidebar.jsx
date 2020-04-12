@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import theme from "styles/theme";
 import DashboardOutlinedIcon from "@material-ui/icons/DashboardOutlined";
+import styleVariables from "styles/variables";
 
 const SidebarLink = ({ href, icon, text, sideBarVisible }) => {
   const Icon = icon;
@@ -55,7 +56,7 @@ const Sidebar = ({ sideBarVisible }) => (
         padding: 12px 0;
         margin: 0;
         list-style: none;
-        min-width: 200px;
+        min-width: ${styleVariables.sideBarWidth};
         z-index: 9;
       }
 

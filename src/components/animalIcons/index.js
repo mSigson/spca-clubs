@@ -4,7 +4,6 @@ import Fox from "./Fox";
 import Frog from "./Frog";
 import Hippopotamus from "./Hippopotamus";
 import Koala from "./Koala";
-import Lemur from "./Lemur";
 import Monkey from "./Monkey";
 import Panda from "./Panda";
 import Penguin from "./Penguin";
@@ -22,7 +21,6 @@ export default {
   frog: Frog,
   hippopotamus: Hippopotamus,
   koala: Koala,
-  lemur: Lemur,
   monkey: Monkey,
   panda: Panda,
   penguin: Penguin,

@@ -4,12 +4,19 @@ import Sidebar from "components/Sidebar";
 import theme from "styles/theme";
 import styleVariables from "styles/variables";
 
-const Layout = ({ user, children }) => {
+import IUser from "interfaces/IUser";
+import { useRouter } from "next/router";
+
+interface LayoutProps {
+  user: IUser;
+  children: any;
+}
+
+const Layout = ({ children }: LayoutProps) => {
   const [sideBarVisible, toggleSideBarVisible] = useState(false);
   return (
     <div>
       <Header
-        user={user}
         sideBarVisible={sideBarVisible}
         toggleSideBarVisible={() => toggleSideBarVisible(!sideBarVisible)}
       />

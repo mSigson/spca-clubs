@@ -7,14 +7,13 @@ import Link from "next/link";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import theme from "styles/theme";
+import IProject from "interfaces/projects/IProject";
 
 import requireAuthentication from "components/AuthenticatedComponent";
 import ProjectCard from "components/ProjectCard";
 
 import { useUser } from "utils/user";
-
 import { useRouter } from "next/router";
-import IProject from "interfaces/projects/IProject";
 
 const getProjects = async (club, setProjects) => {
   try {
@@ -43,7 +42,7 @@ const ClubPage = () => {
       <div>
         <Link href={`/club/${club._id}/project/new`}>
           <Button variant="contained" color="secondary" startIcon={<AddIcon />}>
-            Create New Project
+            Start A New Project
           </Button>
         </Link>
         <ul className="projects-container">
@@ -62,7 +61,7 @@ const ClubPage = () => {
       </div>
       <style jsx>{`
         h1 {
-          margin-bottom: 24px;
+          margin-bottom: 48px;
           background: white;
           padding: 24px;
           border-radius: 8px;

@@ -49,10 +49,10 @@ const ProjectForm = ({
   children,
 }: ProjectFormProps) => {
   const [projectName, setProjectName] = useState(undefined as string);
-  const [animalGroup, setAnimalGroup] = useState(undefined as string);
+  const [animalGroup, setAnimalGroup] = useState("pets" as string);
   const [animalIssue, setAnimalIssue] = useState(undefined as string);
   const [learningOutcome, setLearningOutcome] = useState(undefined as string);
-  const [attachedImages, setAttachedImages] = useState(undefined as string[]);
+  const [attachedImages, setAttachedImages] = useState([] as string[]);
 
   const newProject: Partial<IProject> = {
     name: projectName,
@@ -83,14 +83,14 @@ const ProjectForm = ({
         onChange={(e) => setProjectName(e.target.value)}
         variant="outlined"
         style={{
-          width: "50%",
+          width: "45%",
         }}
       />
       <div className="input-container">
         <FormControl
           variant="outlined"
           style={{
-            width: "40%",
+            width: "45%",
             marginRight: "12px",
           }}
         >
@@ -120,7 +120,7 @@ const ProjectForm = ({
           onChange={(e) => setAnimalIssue(e.target.value)}
           variant="outlined"
           style={{
-            width: "40%",
+            width: "45%",
             margin: 0,
           }}
         />

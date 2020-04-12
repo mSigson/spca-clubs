@@ -60,8 +60,6 @@ const CreateProject = ({ createNewProject, club }) => {
     categories[0] as Category
   );
 
-  console.log(step);
-
   return (
     <>
       <div className="create-project-container">
@@ -70,7 +68,7 @@ const CreateProject = ({ createNewProject, club }) => {
             <h3>Pick a Project Category</h3>
             <ul className="category-container">
               {categories.map((category) => (
-                <li key={`${category}`}>
+                <li key={`${category.type}-category`}>
                   <CategorySelector
                     category={category}
                     setStep={setStep}
@@ -110,6 +108,7 @@ const CreateProject = ({ createNewProject, club }) => {
               color="primary"
               size="large"
               onClick={() => setStep(1)}
+              className="create-project-flow-back-button"
             >
               Back
             </Button>
@@ -120,27 +119,34 @@ const CreateProject = ({ createNewProject, club }) => {
         h3 {
           margin-bottom: 12px;
         }
+        .create-project-container {
+          max-width: 1000px;
+          background: white;
+          padding: 24px;
+          border-radius: 8px;
+          margin: 0 auto;
+        }
+
         .category-container {
           display: flex;
           flex-wrap: wrap;
           justify-content: space-around;
-          max-width: 700px;
+          max-width: 900px;
           margin: 24px auto;
         }
 
         .category-container li {
           margin-bottom: 8px;
+          margin-right: 10px;
         }
 
-        .input-container {
-          display: flex;
-          align-items: center;
+        .step-container {
+          position: relative;
         }
 
-        .form-action-buttons {
-          display: flex;
-          margin-top: 24px;
-          justify-content: space-between;
+        .create-project-flow-back-button {
+          position: absolute;
+          bottom: 0;
         }
       `}</style>
     </>

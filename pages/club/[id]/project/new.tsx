@@ -31,28 +31,18 @@ const CreateProject = () => {
 
   return (
     <Layout user={user}>
-      <h1>Create New Project</h1>
-      <div className="create-project-container">
-        <CreateProjectFlow
-          club={club}
-          createNewProject={(newProjectData) =>
-            createNewProject(newProjectData, club)
-          }
-        />
-      </div>
+      <h1>Start A New Project</h1>
+      <CreateProjectFlow
+        club={club}
+        createNewProject={(newProjectData) =>
+          createNewProject(newProjectData, club)
+        }
+      />
       <style jsx>{`
         h1 {
-          margin-bottom: 24px;
-          background: white;
-          padding: 24px;
-          border-radius: 8px;
+          margin-bottom: 48px;
+          padding-left: 24px;
           color: ${theme.palette.primary.main};
-        }
-
-        .create-project-container {
-          background: white;
-          padding: 24px;
-          border-radius: 8px;
         }
       `}</style>
     </Layout>

@@ -30,17 +30,17 @@ const CreateClub = ({ user }) => {
       </div>
       <style jsx>{`
         h1 {
-          margin-bottom: 24px;
-          background: white;
-          padding: 24px;
-          border-radius: 8px;
+          margin-bottom: 48px;
+          padding-left: 24px;
           color: ${theme.palette.primary.main};
         }
 
         .form-container {
+          max-width: 1000px;
           background: white;
           padding: 24px;
           border-radius: 8px;
+          margin: 0 auto;
         }
       `}</style>
     </Layout>
