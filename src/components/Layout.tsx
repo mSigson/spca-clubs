@@ -5,7 +5,6 @@ import theme from "styles/theme";
 import styleVariables from "styles/variables";
 
 import IUser from "interfaces/IUser";
-import { useRouter } from "next/router";
 
 interface LayoutProps {
   user: IUser;
@@ -15,25 +14,28 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const [sideBarVisible, toggleSideBarVisible] = useState(false);
   return (
-    <div>
-      <Header
+    <div className="layout">
+      <Sidebar
         sideBarVisible={sideBarVisible}
         toggleSideBarVisible={() => toggleSideBarVisible(!sideBarVisible)}
       />
-      <div className="container">
-        <Sidebar sideBarVisible={sideBarVisible} />
+      <div className="layout-main">
+        <Header />
         <main>{children}</main>
       </div>
 
       <style jsx>{`
-        .container {
+        .layout {
           display: flex;
-          height: calc(100vh - ${styleVariables.topBarHeight});
+        }
+
+        .layout-main {
+          width: calc(100vw - ${styleVariables.sidebarWidth});
         }
 
         main {
           width: 100%;
-          padding: 18px 100px 18px 32px;
+          padding: 62px 60px;
           color: ${theme.palette.text.primary};
         }
 

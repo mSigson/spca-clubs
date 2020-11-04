@@ -187,6 +187,6 @@ a:hover {
 }
 
 @font-face {
-  font-family: "Roboto";
-  src: url("../typography/Roboto/Roboto-Regular.ttf") format("ttf");
+  font-family: "Mulish";
+  src: url("../typography/Mulish/Mulish-Regular.ttf") format("ttf");
 }

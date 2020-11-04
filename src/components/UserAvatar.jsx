@@ -10,7 +10,8 @@ const UserAvatar = ({ user, height, width }) => {
           width: ${width};
           height: ${height};
           border-radius: 50%;
-          border: 1px solid ${theme.palette.text.primary}
+          padding: 2px;
+          border: 1.5px solid #DFE0EB;
         }
 
         .user-avatar-container img {
@@ -24,8 +25,8 @@ const UserAvatar = ({ user, height, width }) => {
 };
 
 UserAvatar.defaultProps = {
-  height: "32px",
-  width: "32px",
+  height: "44px",
+  width: "44px",
 };
 
 export default UserAvatar;

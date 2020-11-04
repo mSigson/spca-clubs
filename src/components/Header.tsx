@@ -1,29 +1,15 @@
 import React from "react";
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import { useRouter } from "next/router";
 import { useUser } from "utils/user";
 
 import theme from "styles/theme";
 import Link from "next/link";
 import Button from "@material-ui/core/Button";
-import MenuIcon from "@material-ui/icons/Menu";
-import CloseIcon from "@material-ui/icons/Close";
+
 import UserAvatar from "./UserAvatar";
 import styleVariables from "styles/variables";
 
-import IUser from "interfaces/IUser";
-
-interface HeaderProps {
-  sideBarVisible: Boolean;
-  toggleSideBarVisible: any;
-  width: any;
-}
-
-const Header = ({
-  sideBarVisible,
-  toggleSideBarVisible,
-  width,
-}: HeaderProps) => {
+const Header = () => {
   const { user } = useUser();
   const router = useRouter();
   const club = user?.clubs.find((club) => club._id === router.query.id);
@@ -31,17 +17,6 @@ const Header = ({
   return (
     <header>
       <div className="app-route-info">
-        {isWidthUp("md", width) ? (
-          <div className="header-title">SPCA Clubs</div>
-        ) : (
-          <button onClick={toggleSideBarVisible} className="menu-toggle">
-            {sideBarVisible ? (
-              <CloseIcon fontSize="large" />
-            ) : (
-              <MenuIcon fontSize="large" />
-            )}
-          </button>
-        )}
         {club && (
           <div className="route-navigator">
             <Link href={`/club/${club._id}`}>{club.name}</Link>
@@ -50,7 +25,10 @@ const Header = ({
       </div>
       <div>
         {user ? (
-          <UserAvatar user={user} height="40px" width="40px" />
+          <div className="header-user">
+            <p className="header-user-name">{user.name}</p>
+            <UserAvatar user={user} height="40px" width="40px" />
+          </div>
         ) : (
           <Link href="/api/login">
             <Button variant="contained" color="primary">
@@ -69,6 +47,7 @@ const Header = ({
           height: ${styleVariables.topBarHeight};
           color: ${theme.palette.text.primary};
           font-family: ${theme.typography.fontFamily};
+          background: #fff;
         }
 
         .header-title {
@@ -100,6 +79,18 @@ const Header = ({
           height: 40x;
         }
 
+        .header-user {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .header-user-name {
+          margin-right: 14px;
+          font-size: 14px;
+          font-weight: 400;
+        }
+
         @media (max-width: 960px) {
           .menu-toggle {
             color: ${theme.palette.primary.main};
@@ -114,4 +105,4 @@ const Header = ({
   );
 };
 
-export default withWidth()(Header);
+export default Header;

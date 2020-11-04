@@ -3,20 +3,21 @@ import { red } from "@material-ui/core/colors";
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: "Roboto, sans-serif",
+    fontFamily: "Mulish, sans-serif",
   },
   palette: {
     primary: {
       light: "#E6EFFB",
-      main: "#00337f",
-      contrastText: "#fff",
+      main: "#122F7F",
+      contrastText: "#DDE2FF",
     },
     secondary: {
-      main: "#f2c029",
+      main: "#E6EFFB",
       contrastText: "#fff",
     },
     text: {
-      primary: "#646464",
+      primary: "#3F3F3F",
+      secondary: "#252733",
     },
     error: {
       main: red.A400,
